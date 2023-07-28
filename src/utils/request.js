@@ -5,7 +5,7 @@ import { getToken } from '@/utils/auth'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
+  baseURL: '/api', // api的base_url
   timeout: 15000 // 请求超时时间
 })
 
@@ -28,6 +28,7 @@ service.interceptors.response.use(
   * code为非200是抛错 可结合自己业务进行修改
   */
     const res = response.data
+    console.log('返回值 res',res)
     if (res.code !== 200) {
       Message({
         message: res.message,
